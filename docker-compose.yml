@@ -1,0 +1,10 @@
+services:
+  api:
+    image: nginx:latest
+    ports:
+      - 8080:80
+
+  front:
+    image: openresty/openresty:latest
+    ports:
+      - 80:80

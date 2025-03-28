@@ -1,0 +1,27 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Runner is on the same machine as deployment target
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Copy files to deployment directory
+      run: |
+        # Create directory if it doesn't exist
+        mkdir -p /mnt/storage/coding-with-beer
+        
+        # Rsync all files to the target directory (excluding .git)
+        rsync -az --delete --exclude='.git/' ./ /mnt/storage/coding-with-beer/
+      
+    - name: Deploy with docker-compose
+      run: |
+        cd /mnt/storage/coding-with-beer
+        docker-compose down
+        docker-compose up -d --build --remove-orphans
