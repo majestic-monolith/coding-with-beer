@@ -31,6 +31,8 @@ services:
     restart: always
     networks:
       - main
+    ports:
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -46,6 +48,18 @@ services:
       - ./backend:/app
     working_dir: /app
     entrypoint: ["sleep", "infinity"]
+
+  migrations:
+    image: amacneil/dbmate:latest
+    depends_on:
+      - db
+    networks:
+      - main
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/postgres?sslmode=disable
+    volumes:
+      - ./backend/internal/database/migrations:/db/migrations
+    command: [ "up" ]
 
 volumes:
   pgdata:
