@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Copia .env
+[ -f .env ] || cp .env.example .env
+
 # Instalar dependências usando o Bun
 bun install
 
