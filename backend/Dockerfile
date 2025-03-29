@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy Go files
 COPY go.mod ./
-COPY main.go ./
+COPY cmd/main.go ./
 
 # Download dependencies (generates go.sum too)
 RUN go mod tidy
@@ -14,7 +14,7 @@ RUN go mod tidy
 COPY . .
 
 # Build the binary
-RUN go build -o main .
+RUN go build -o cmd/main .
 
 # ========== Dev stage (with Air hot reload) ==========
 FROM base AS dev

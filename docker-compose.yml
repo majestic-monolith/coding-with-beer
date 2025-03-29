@@ -1,21 +1,22 @@
 services:
   api:
     build:
-      context: ./api
+      context: ./backend
       target: dev
     ports:
       - "8080:8080"
     volumes:
-      - ./api:/app
+      - ./backend:/app
     working_dir: /app
 
   front:
     image: openresty/openresty:latest
     volumes:
-      - ./app/public:/var/www
+      - ./frontend/public:/var/www
       - ./docker/app/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - 80:80
+
   db:
     image: postgres:16
     container_name: postgres

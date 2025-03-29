@@ -3,7 +3,7 @@ root = "."
 tmp_dir = "/tmp"
 
 [build]
-cmd = "go build -o /tmp/main ."
+cmd = "go build -o /tmp/main ./cmd"
 bin = "/tmp/main"
 # Command to run (here just running the compiled binary; prepend env vars if needed)
 # full_bin = "APP_ENV=dev /tmp/main"

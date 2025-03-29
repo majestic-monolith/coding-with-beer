@@ -1,4 +1,4 @@
-module hello-gin
+module api
 
 go 1.24
 
