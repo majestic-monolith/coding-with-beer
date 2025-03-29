@@ -1,14 +1,16 @@
 package main
 
 import (
+	"backend/internal/auth"
 	"backend/internal/config"
 	"context"
-	"database/sql"
-	"github.com/gin-gonic/gin"
-	_ "github.com/lib/pq"
 	"log"
 	"net/http"
 
+	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
+
+	"backend/internal/database"
 	"backend/internal/database/generated"
 )
 
@@ -18,13 +20,8 @@ func main() {
 		log.Fatal("Failed to load configuration:", err)
 	}
 
-	dsn := cfg.DatabaseURL
-
-	db, err := sql.Open("postgres", dsn)
-	if err != nil {
-		log.Fatalf("Erro ao conectar no banco: %v", err)
-	}
-	defer db.Close()
+	db := database.GetConnection(cfg)
+	defer database.CloseConnection()
 
 	queries := generated.New(db)
 
@@ -38,6 +35,16 @@ func main() {
 			return
 		}
 		c.JSON(http.StatusOK, users)
+	})
+
+	authGroup := r.Group("/auth")
+
+	authGroup.POST("/register", func(c *gin.Context) {
+		auth.Register(c, queries)
+	})
+
+	authGroup.POST("/login", func(c *gin.Context) {
+		auth.Login(c, queries)
 	})
 
 	r.Run(":8080")

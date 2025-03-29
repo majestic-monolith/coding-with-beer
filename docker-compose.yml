@@ -10,10 +10,6 @@ services:
     volumes:
       - ./backend:/app
     working_dir: /app
-    env_file:
-      - .env
-#    environment:
-#      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres?sslmode=disable
 
   frontend:
     build:
