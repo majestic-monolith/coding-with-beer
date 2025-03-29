@@ -85,111 +85,18 @@
       <!-- Divider -->
       <hr class="my-4 md:min-w-full" />
       <!-- Heading -->
-      <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-      >
-        Admin Layout Pages
-      </h6>
       <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
         <li class="items-center">
           <a
-            href="/admin/dashboard"
-            class="text-xs uppercase py-3 font-bold block {page.url.pathname.indexOf('/admin/dashboard') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
+            href="/admin/documents"
+            class="text-xs uppercase py-3 font-bold block {page.url.pathname.indexOf('/admin/documents') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
           >
             <i
-              class="fas fa-tv mr-2 text-sm {page.url.pathname.indexOf('/admin/dashboard') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
+              class="fas fa-tv mr-2 text-sm {page.url.pathname.indexOf('/admin/documents') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
             ></i>
-            Dashboard
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            href="/admin/settings"
-            class="text-xs uppercase py-3 font-bold block {page.url.pathname.indexOf('/admin/settings') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-tools mr-2 text-sm {page.url.pathname.indexOf('/admin/settings') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Settings
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            href="/admin/tables"
-            class="text-xs uppercase py-3 font-bold block {page.url.pathname.indexOf('/admin/tables') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-table mr-2 text-sm {page.url.pathname.indexOf('/admin/tables') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Tables
-          </a>
-        </li>
-      </ul>
-
-      <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
-      <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-      >
-        Auth Layout Pages
-      </h6>
-      <!-- Navigation -->
-
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-        <li class="items-center">
-          <a
-            class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-            href="/auth/login"
-          >
-            <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
-            Login
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-            href="/auth/register"
-          >
-            <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-            Register
-          </a>
-        </li>
-      </ul>
-
-      <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
-      <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-      >
-        No Layout Pages
-      </h6>
-      <!-- Navigation -->
-
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-        <li class="items-center">
-          <a
-            class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-            href="/landing"
-          >
-            <i class="fas fa-newspaper text-blueGray-300 mr-2 text-sm"></i>
-            Landing Page
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-            href="/profile"
-          >
-            <i class="fas fa-user-circle text-blueGray-300 mr-2 text-sm"></i>
-            Profile Page
+            Documents
           </a>
         </li>
       </ul>
