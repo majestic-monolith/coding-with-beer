@@ -37,5 +37,14 @@ services:
       - ./frontend/.env
     command: sh /app/start.sh 
 
+  sqlc:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.sqlc
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    entrypoint: ["sleep", "infinity"]
+
 volumes:
   pgdata:
