@@ -1,23 +1,24 @@
 package main
 
 import (
+	"backend/internal/config"
 	"context"
 	"database/sql"
-	"log"
-	"net/http"
-	"os"
-
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
+	"log"
+	"net/http"
 
 	"backend/internal/database/generated"
 )
 
 func main() {
-	dsn := os.Getenv("DATABASE_URL")
-	if dsn == "" {
-		log.Fatal("DATABASE_URL não definida")
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatal("Failed to load configuration:", err)
 	}
+
+	dsn := cfg.DatabaseURL
 
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
