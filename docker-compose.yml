@@ -3,11 +3,15 @@ services:
     build:
       context: ./backend
       target: dev
+    networks:
+      - main
     ports:
       - "8080:8080"
     volumes:
       - ./backend:/app
     working_dir: /app
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres?sslmode=disable
 
   frontend:
     build:
@@ -17,25 +21,33 @@ services:
       - "80:5173"
     volumes:
       - ./frontend:/app
-    env_file:
-      - ./frontend/.env
     command: sh /app/start.sh
 
   db:
     image: postgres:16
     container_name: postgres
     restart: always
-    ports:
-      - "5432:5432"
+    networks:
+      - main
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     volumes:
-      - ./frontend:/app
-    env_file:
-      - ./frontend/.env
-    command: sh /app/start.sh 
+      - pgdata:/var/lib/postgresql/data
+
+  sqlc:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.sqlc
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    entrypoint: ["sleep", "infinity"]
 
 volumes:
   pgdata:
+
+networks:
+  main:
+    name: main
